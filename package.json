@@ -1,0 +1,28 @@
+{
+  "name": "qiankun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:main": "cd main && npm install",
+    "install:sub-vue": "cd sub-vue && npm install",
+    "install:sub-vuetwo": "cd sub-vuetwo && npm install",
+    "start": "npm-run-all --parallel start:*",
+    "start:sub-vue": "cd sub-vue && npm run serve",
+    "start:sub-vuetwo": "cd sub-vuetwo && npm run serve",
+    "start:main": "cd main && npm run serve",
+    "build": "npm-run-all --serial build:*",
+    "build:main": "cd main && npm run build",
+    "build:sub-vue": "cd sub-vue && npm run build",
+    "build:sub-vuetwo": "cd sub-vuetwo && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm-run-all": "^4.1.5",
+    "serve-dev": "^1.0.0-alpha.6"
+  }
+}
