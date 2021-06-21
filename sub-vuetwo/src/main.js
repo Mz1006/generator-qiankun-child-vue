@@ -11,27 +11,21 @@ let VueRouter = null;
 let instance = null;
 function render(props = {}) {
   const { container, routerBase } = props;
-  // console.log('vuetwo',window.__POWERED_BY_QIANKUN__,routerBase, process.env.BASE_URL)
-  
-  console.log('instancevuetwo createRouter', routerBase,createWebHashHistory(),routes)
+
   VueRouter = createRouter({
     base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.BASE_URL,
     history: createWebHashHistory(),
     routes: routes
   })
+  
   instance = app.use(VueRouter).mount(container ? container.querySelector("#app") : "#app")
 
-  
-  console.log('createRouter vuetwo',VueRouter)
-  // console.log('instancevuetwo VueRouter',VueRouter)
 }
 
 if (window.__POWERED_BY_QIANKUN__) {
   // eslint-disable-next-line
   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
-  // console.log('vuetwo qiankun运行')
 } else {
-  // console.log('vuetwo 独立运行  __webpack_public_path__')
   render();
 }
 
@@ -47,11 +41,7 @@ export async function mount(props) {
 // }
 
 export async function unmount() {
-  if(!instance){
-    instance.$destroy();
-  }
+  instance.$destroy();
   instance.$el.innerHTML = ""; // 子项目内存泄露问题
   instance = null;
-  // console.log('instancevuetwo VueRouter unmount',VueRouter)
-  // VueRouter = null;
 }
