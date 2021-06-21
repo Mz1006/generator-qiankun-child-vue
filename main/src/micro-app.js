@@ -2,12 +2,12 @@ const microApps = [
   {
     name: 'sub-vue',
     entry: process.env.VUE_APP_SUB_VUE,  // 子项目入口
-    activeRule: '/sub-vue'  //子项目在主项目中的路由
+    activeRule: '/#/micrApp/sub-vue'  //子项目在主项目中的路由
   },
   {
     name: 'sub-vuetwo',
     entry: process.env.VUE_APP_SUB_VUETWO,  // 子项目入口
-    activeRule: '/sub-vuetwo'  //子项目在主项目中的路由
+    activeRule: '/#/micrApp/sub-vuetwo'  //子项目在主项目中的路由
   }
 ]
 

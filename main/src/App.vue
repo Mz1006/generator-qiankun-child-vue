@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="main">
     <div class="layout-header">
       <div class="logo">QIANKUN-ZHANGMENGZHU</div>
       <ul class="sub-apps">
@@ -12,13 +12,13 @@
 
 <script>
 import microApps from './micro-app'
-import {start} from 'qiankun'
+// import {start} from 'qiankun'
 export default {
-  name: 'App',
+  name: 'main',
   data () {
     return {
       microApps,
-      current: '/sub-vue'
+      current: ''
     }
   },
   methods: {
@@ -29,8 +29,10 @@ export default {
     },
   },
   created() {
-    start();
-    const path = window.location.pathname
+    // 首先高亮第一个子项目的菜单
+    this.current = microApps[0].activeRule
+    // 根据hash高亮菜单
+    const path = `/${window.location.hash}`;
     if (this.microApps.findIndex(item => item.activeRule === path) >= 0) {
       this.current = path
     }

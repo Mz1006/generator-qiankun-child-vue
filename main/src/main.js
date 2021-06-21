@@ -1,28 +1,28 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { registerMicroApps, start, setDefaultMountApp } from 'qiankun'
+import { registerMicroApps, start } from 'qiankun'
 import microApps from './micro-app'
 
 const vueApp = createApp(App)
 
 vueApp.config.productionTip = false
 
-vueApp.mount('#app')
+vueApp.mount('#main')
 
 const config = {
   beforeLoad: [
-    //   app => {
-        //   console.log("%c before load",
-        //   'background:#0f0 ; padding: 1px; border-radius: 3px;  color: #fff',
-        //   app);
-    //   }
+      app => {
+          console.log("%c before load",
+          'background:#0f0 ; padding: 1px; border-radius: 3px;  color: #fff',
+          app);
+      }
   ], // 挂载前回调
   beforeMount: [
-    //  app => {
-        //   console.log("%c before mount",
-        //   'background:#f1f ; padding: 1px; border-radius: 3px;  color: #fff',
-        //   app);
-    //  }
+     app => {
+          console.log("%c before mount",
+          'background:#f1f ; padding: 1px; border-radius: 3px;  color: #fff',
+          app);
+     }
   ], // 挂载后回调
   afterUnmount: [
      app => {
@@ -36,4 +36,4 @@ const config = {
 registerMicroApps(microApps, config)
 start()
 
-setDefaultMountApp(microApps[0].activeRoule) // 默认打开第一个子项目
+// setDefaultMountApp(microApps[0].activeRoule) // 默认打开第一个子项目

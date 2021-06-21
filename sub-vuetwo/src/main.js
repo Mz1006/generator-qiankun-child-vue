@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from "./App.vue";
 import routes from "./router";
-import { createRouter,createWebHashHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 
 const app = createApp(App);
 
@@ -10,17 +10,27 @@ app.config.productionTip = false;
 let VueRouter = null;
 let instance = null;
 function render(props = {}) {
-  const { container, routerBase } = props;
+  const { container } = props;
 
   VueRouter = createRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.BASE_URL,
+    // base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.BASE_URL,
     history: createWebHashHistory(),
     routes: routes
   })
-  
-  instance = app.use(VueRouter).mount(container ? container.querySelector("#app") : "#app")
 
+  if (window.__POWERED_BY_QIANKUN__) {
+    VueRouter.beforeEach((to, from, next) => {
+      if (!to.path.includes("/micrApp")) {
+        next({ path: `/micrApp/${name}${to.path}` });
+      } else {
+        next();
+      }
+    });
+  }
+
+  instance = app.use(VueRouter).mount(container ? container.querySelector("#app") : "#app")
 }
+
 
 if (window.__POWERED_BY_QIANKUN__) {
   // eslint-disable-next-line
@@ -40,8 +50,9 @@ export async function mount(props) {
 //   render(props);
 // }
 
+
 export async function unmount() {
-  instance.$destroy();
+  // instance.$destroy();
   instance.$el.innerHTML = ""; // 子项目内存泄露问题
   instance = null;
 }
