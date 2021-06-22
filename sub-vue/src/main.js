@@ -1,25 +1,25 @@
 import { createApp } from 'vue'
 import App from "./App.vue";
-import routes from "./router";
+import routes from "./router/index";
 import { createRouter, createWebHashHistory } from "vue-router"
 
 const app = createApp(App);
 
 app.config.productionTip = false;
 
-let VueRouter = null;
+let childRouter = null;
 let instance = null;
 function render(props = {}) {
   const { container } = props;
 
-  VueRouter = createRouter({
+  childRouter = createRouter({
     // base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.BASE_URL,
     history: createWebHashHistory(),
     routes: routes
   })
 
   if (window.__POWERED_BY_QIANKUN__) {
-    VueRouter.beforeEach((to, from, next) => {
+    childRouter.beforeEach((to, from, next) => {
       if (!to.path.includes("/micrApp")) {
         next({ path: `/micrApp/${name}${to.path}` });
       } else {
@@ -28,7 +28,7 @@ function render(props = {}) {
     });
   }
 
-  instance = app.use(VueRouter).mount(container ? container.querySelector("#app") : "#app")
+  instance = app.use(childRouter).mount(container ? container.querySelector("#app") : "#app")
 }
 
 

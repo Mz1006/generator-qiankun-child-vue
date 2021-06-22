@@ -4,7 +4,7 @@ import { name } from '../../package.json'
 
 let prefix = window.__POWERED_BY_QIANKUN__ ? `/micrApp/${name}` : "/";
  
-const VueRouter =  [
+const routers =  [
   {
     path: prefix,
     name: "Home",
@@ -21,4 +21,4 @@ const VueRouter =  [
   }
   ]
 
-export default VueRouter;
+export default routers;
