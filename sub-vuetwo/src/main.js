@@ -1,3 +1,4 @@
+import './public-path';
 import { createApp } from 'vue'
 import App from "./App.vue";
 import routes from "./router/index";
@@ -10,6 +11,7 @@ app.config.productionTip = false;
 let childRouter = null;
 let instance = null;
 function render(props = {}) {
+  // console.log('执行two render')
   const { container } = props;
 
   childRouter = createRouter({
@@ -32,10 +34,15 @@ function render(props = {}) {
 }
 
 
-if (window.__POWERED_BY_QIANKUN__) {
-  // eslint-disable-next-line
-  __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
-} else {
+// if (window.__POWERED_BY_QIANKUN__) {
+//   // eslint-disable-next-line
+//   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
+// } else {
+//   render();
+// }
+
+// 独立运行时
+if (!window.__POWERED_BY_QIANKUN__) {
   render();
 }
 
@@ -45,14 +52,11 @@ export async function mount(props) {
   render(props);
 }
 
-// 增加 update 钩子以便主应用手动更新微应用
-// export async function update(props) {
-//   render(props);
-// }
-
-
 export async function unmount() {
-  // instance.$destroy();
+
+  // console.log('instance vuetwo', instance) // undefind
+  instance.$destroy();
   instance.$el.innerHTML = ""; // 子项目内存泄露问题
   instance = null;
+  childRouter = null;
 }
