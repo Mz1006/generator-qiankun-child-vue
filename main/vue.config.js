@@ -1,18 +1,8 @@
 module.exports = {
+  lintOnSave: process.env.NODE_ENV !== 'production',
+  runtimeCompiler: true,
+  productionSourceMap: false,
   devServer: {
-    port: 5500,
-  },
-  // chainWebpack: config => {
-  //   config.plugin('html')
-  //     .tap((args) => {
-  //       args[0].title = 'qiankun-test'
-  //       return args
-  //     })
-  // },
-  configureWebpack: {
-    externals: {
-      // 'vue': 'Vue',
-      // 'vue-router': 'VueRouter',
-    }
+    port: 9000
   }
-};
+}

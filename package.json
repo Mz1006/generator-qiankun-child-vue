@@ -1,28 +1,36 @@
 {
-  "name": "qiankun",
+  "name": "qiankun-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "qinakun 微前端解决方案示例",
   "scripts": {
-    "install": "npm-run-all --serial install:*",
+    "install:vue2": "cd vue2 && npm install",
+    "install:vue3": "cd vue3 && npm install",
     "install:main": "cd main && npm install",
-    "install:sub-vue": "cd sub-vue && npm install",
-    "install:sub-vuetwo": "cd sub-vuetwo && npm install",
-    "start": "npm-run-all --parallel start:*",
-    "start:sub-vue": "cd sub-vue && npm run serve",
-    "start:sub-vuetwo": "cd sub-vuetwo && npm run serve",
-    "start:main": "cd main && npm run serve",
-    "build": "npm-run-all --serial build:*",
+    "install:purehtml": "cd purehtml && npm install",
+    "install-all": "npm-run-all install:*",
+    "serve:main": "cd main && npm run serve",
+    "serve:vue3": "cd vue3 && npm run serve",
+    "serve:vue2": "cd vue2 && npm run serve",
+    "serve:purehtml": "cd purehtml && npm run serve",
+    "serve-all": "npm-run-all --parallel serve:*",
     "build:main": "cd main && npm run build",
-    "build:sub-vue": "cd sub-vue && npm run build",
-    "build:sub-vuetwo": "cd sub-vuetwo && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:vue3": "cd vue3 && npm run build",
+    "build:vue2": "cd vue2 && npm run build",
+    "build-all": "npm-run-all --parallel build:*"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/bordon.com/qiankun-template.git"
+  },
+  "keywords": [
+    "qiankun",
+    "vue",
+    "vue3",
+    "react"
+  ],
+  "author": "bordon",
+  "license": "MIT",
   "dependencies": {
-    "npm-run-all": "^4.1.5",
-    "serve-dev": "^1.0.0-alpha.6"
+    "npm-run-all": "^4.1.5"
   }
 }

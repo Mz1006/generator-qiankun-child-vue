@@ -1,11 +1,6 @@
-# 忽略校验配置
 .DS_Store
 node_modules
 /dist
-
-build/*.js
-/public
-
 
 
 # local env files
@@ -20,7 +15,7 @@ pnpm-debug.log*
 
 # Editor directories and files
 .idea
-# .vscode
+.vscode
 *.suo
 *.ntvs*
 *.njsproj

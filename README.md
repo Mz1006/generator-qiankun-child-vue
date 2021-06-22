@@ -1,47 +1,10 @@
-# qiankun-vue
+# qiankun-template （乾坤）
+vue3 + qinakun 微前端解决方案示例，采用vue3作为主应用技术，目前接入vue3应用，后续逐步接入react等不同技术栈应用
 
-#### 介绍
-应用框架为 vue3
-
-先在 qiankun-vue 安装 npm-run-all  
-
-执行 npm install  安装所有项目依赖
-
-启动 npm start  启动所有项目
-
-访问端口为5500为主应用
-
-详细执行命令查看package.json
-
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 关于微前端相关技术和文章
+- [qiankun](https://qiankun.umijs.org/zh) 基于 single-spa 的微前端实现库
+- [single-spa](https://github.com/CanopyTax/single-spa) 将多个单页面应用聚合为一个整体应用的 JavaScript 微前端框架
+- [import-html-entry](https://github.com/kuitos/import-html-entry/) 把html作为入口文件，加载其他静态资源
+- [微前端在小米 CRM 系统的实践](https://xiaomi-info.github.io/2020/04/14/fe-microfrontends-practice/)
+- [可能是你见过最完善的微前端解决方案](https://zhuanlan.zhihu.com/p/78362028)
+- [基于 qiankun 的 CMS 应用微前端实践](https://zhuanlan.zhihu.com/p/267649968)

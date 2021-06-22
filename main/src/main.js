@@ -1,39 +1,60 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { registerMicroApps, start } from 'qiankun'
-import microApps from './micro-app'
+import router from './router'
+import store from './store'
+import {
+  registerMicroApps,
+  start,
+  initGlobalState
+} from 'qiankun'
 
-const vueApp = createApp(App)
+createApp(App)
+  .use(store)
+  .use(router)
+  .mount('#main')
 
-vueApp.config.productionTip = false
+// 注册微应用并启动：
+registerMicroApps([
+  {
+    name: 'vue3', // 微应用的名称，微应用之间必须确保唯一。
+    entry: '//localhost:9002', // 必选，微应用的入口。
+    container: '#subapp-container', // 必选，微应用的容器节点的选择器或者 Element 实例。
+    activeRule: '/vue3' // 必选，微应用的激活规则。
+  },
+  {
+    name: 'vue2',
+    entry: '//localhost:9003',
+    container: '#subapp-container',
+    activeRule: '/vue2'
+  },
+  {
+    name: 'purehtml',
+    entry: '//localhost:7104',
+    container: '#subapp-container',
+    activeRule: '/purehtml'
+  }
+])
 
-vueApp.mount('#main')
+// 主应用创建共享状态：
+const { onGlobalStateChange, setGlobalState } = initGlobalState({
+  user: 'qiankun'
+})
 
-const config = {
-  beforeLoad: [
-      app => {
-          console.log("%c before load",
-          'background:#0f0 ; padding: 1px; border-radius: 3px;  color: #fff',
-          app);
-      }
-  ], // 挂载前回调
-  beforeMount: [
-     app => {
-          console.log("%c before mount",
-          'background:#f1f ; padding: 1px; border-radius: 3px;  color: #fff',
-          app);
-     }
-  ], // 挂载后回调
-  afterUnmount: [
-     app => {
-          console.log("%c after unload",
-          'background:#a7a ; padding: 1px; border-radius: 3px;  color: #fff',
-          app);
-     }
-  ] // 卸载后回调
-}
+onGlobalStateChange((value, prev) =>
+  console.log('[onGlobalStateChange - master]:', value, prev)
+)
 
-registerMicroApps(microApps, config)
+setGlobalState({
+  ignore: 'master',
+  user: {
+    name: 'master'
+  }
+})
+
+/**
+ * Step3 设置默认进入的子应用
+ */
+// setDefaultMountApp('/vue3')
+
+// 启动 qiankun
 start()
-
-// setDefaultMountApp(microApps[0].activeRoule) // 默认打开第一个子项目
