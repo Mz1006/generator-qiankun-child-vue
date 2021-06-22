@@ -1,22 +1,30 @@
 const microApps = [
   {
-    name: 'sub-vue',
-    entry: process.env.VUE_APP_SUB_VUE,  // 子项目入口
-    activeRule: '/#/micrApp/sub-vue'  //子项目在主项目中的路由
+    name: 'vue3', // 微应用的名称，微应用之间必须确保唯一。
+    entry: '//localhost:9002', // 必选，微应用的入口。
+    container: '#subapp-container', // 必选，微应用的容器节点的选择器或者 Element 实例。
+    activeRule: '/vue3' // 必选，微应用的激活规则。
   },
   {
-    name: 'sub-vuetwo',
-    entry: process.env.VUE_APP_SUB_VUETWO,  // 子项目入口
-    activeRule: '/#/micrApp/sub-vuetwo'  //子项目在主项目中的路由
+    name: 'vue2',
+    entry: '//localhost:9003',
+    container: '#subapp-container',
+    activeRule: '/vue2'
+  },
+  {
+    name: 'purehtml',
+    entry: '//localhost:7104',
+    container: '#subapp-container',
+    activeRule: '/purehtml'
   }
 ]
 
 const apps = microApps.map(item => {
   return {
     ...item,
-    container: '#subapp-viewport', // 子应用挂载的div
+    container: '#subapp-container', // 子应用挂载的div
     props: {
-      routerBase: item.activeRule, // 下发基础路由
+
     }
   }
 })

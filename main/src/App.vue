@@ -1,21 +1,18 @@
 <template>
-  <div id="main">
-    <Home />
-    <div id="subapp-container">
-      <router-view />
-    </div>
+  <Home />
+  <div id="subapp-container">
+
   </div>
 </template>
 <script>
 import Home from '@/views/Home.vue'
 export default {
-  name: 'main',
+  name: 'Main',
   components: {
     Home
   }
 }
 </script>
-
 <style lang="less">
 
 </style>
