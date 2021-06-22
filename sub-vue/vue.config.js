@@ -14,6 +14,10 @@ module.exports = {
       library: `${name}-[name]`,
       libraryTarget: 'umd',
       jsonpFunction: `webpackJsonp_${name}`
-    }
+    },
+    // externals: {
+    //   'vue': 'Vue',
+    //   'vue-router': 'VueRouter',
+    // }
   }
 };

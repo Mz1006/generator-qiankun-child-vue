@@ -30,7 +30,7 @@ function render(props = {}) {
     });
   }
 
-  instance = app.use(childRouter).mount(container ? container.querySelector("#app") : "#app")
+  instance = app.use(childRouter).mount(container ? container.querySelector("#sub-vuetwo") : "#sub-vuetwo")
 }
 
 
