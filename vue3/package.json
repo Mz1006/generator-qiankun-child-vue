@@ -10,7 +10,6 @@
   "dependencies": {
     "ant-design-vue": "^1.7.2",
     "core-js": "^3.6.5",
-    "eslint-config-vue": "file:../../eslint-config-vue",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
