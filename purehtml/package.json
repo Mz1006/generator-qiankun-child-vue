@@ -6,7 +6,6 @@
   "scripts": {
     "serve": "cross-env PORT=7104 http-server . --cors"
   },
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^7.0.2",
