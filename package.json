@@ -31,6 +31,8 @@
   "author": "zhangmengzhu",
   "license": "MIT",
   "dependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "generator-qiankun-child-vue": "^3.1.0",
+    "yo": "^4.2.0"
   }
 }
