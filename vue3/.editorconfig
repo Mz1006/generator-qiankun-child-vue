@@ -1,5 +1,15 @@
-[*.{js,jsx,ts,tsx,vue}]
-indent_style = space
+
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab  # 缩进方式
 indent_size = 2
-trim_trailing_whitespace = true
-insert_final_newline = true
+end_of_line = lf  # 换行符类型  cr回车 lf换行 crlf回车并换行
+insert_final_newline = true  #文件是否以空行结束
+trim_trailing_whitespace = true #是否删除行尾空格
+# max_line_length = 1280
+
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false
