@@ -24,9 +24,11 @@ module.exports = {
 		"no-duplicate-imports": 2, // 禁止模块重复导入
 		"padding-line-between-statements": [2,{ blankLine: "always", prev: "*", next: "return" }], // return前空行
 		"array-callback-return": 2,  // 数组方法执行return
-		"no-underscore-dangle": 0,
+		"no-underscore-dangle": 0,  // 忽略下划线
 		"import/no-default-export": 0,
-		"import/prefer-default-export": 0
+		"import/prefer-default-export": 0,
+		"no-unused-expressions": 0, // 表达式
+		"no-unused-vars":1 // 定义未引用
   },
 	// webpack兼容
 	settings: {
