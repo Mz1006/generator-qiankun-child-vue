@@ -1,14 +1,37 @@
 import './public-path';
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
+// import router from './router';
 import store from './store';
+import { createRouter, createWebHistory } from 'vue-router';
 
 // eslint-disable-next-line no-unused-vars
 let instance = null;
+const { name } = require('../package.json');
 
 function render(props = {}) {
-  const { container } = props;
+  const { container, routerApps } = props;
+	let childrouter = [];
+
+	routerApps.forEach((item) => {
+		if(item.name === name){
+			if(!!item.children.length){
+				item.children.forEach((item) => {
+					childrouter.push({
+						path: item.childpath,
+						name: item.name,
+						component: () => import('@/views/'+item.name+ '/index.vue')
+					})
+				})
+			}
+		}
+	});
+	// console.log('childrouter',childrouter)
+	const router = createRouter({
+		history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/' + name : '/'),
+		routes: childrouter
+	})
+
   instance = createApp(App)
     .use(store)
     .use(router)

@@ -1,3 +1,3 @@
 <template>
-  <div>11111</div>
+	<div>帮助</div>
 </template>

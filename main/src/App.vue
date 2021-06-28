@@ -33,7 +33,7 @@ export default {
       collapsed: false,
     };
   },
-};
+}
 </script>
 
 <style>

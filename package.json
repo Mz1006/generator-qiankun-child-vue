@@ -1,7 +1,7 @@
 {
-  "name": "qiankun-template",
+  "name": "qiankun-vue",
   "version": "1.0.0",
-  "description": "qinakun 微前端解决方案示例",
+  "description": "qinakun-vue",
   "scripts": {
     "install:vue2": "cd vue2 && npm install",
     "install:vue3": "cd vue3 && npm install",

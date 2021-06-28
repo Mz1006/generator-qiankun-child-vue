@@ -17,6 +17,8 @@ const routes = [
   }
 ]
 
+console.log('vue3 routes',routes)
+
 const router = createRouter({
   history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/vue3' : '/'),
   routes
