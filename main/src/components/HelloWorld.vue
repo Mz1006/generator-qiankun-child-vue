@@ -1,19 +1,19 @@
 <template>
   <div>
-    <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
-      <div v-for="item in microApps" :key="item.name">
-        <a-menu-item :key="item.name" v-if="item.children.length === 0">
+    <a-menu theme="dark" mode="inline">
+      <div v-for="item in microApps">
+        <a-menu-item v-if="item.children.length === 0" :key="item.id">
           <component :is="item.icon"></component>
-          <a :href="item.activeRule">{{item.title}}</a>
+          <a :href="item.activeRule">{{item.name}}</a>
         </a-menu-item>
-        <a-sub-menu :key="item.name" v-else>
+        <a-sub-menu v-else :key="`sub${item.id}`">
           <template #title>
             <span>
               <component :is="item.icon"></component>
               <span>{{item.name}}</span>
             </span>
           </template>
-          <a-menu-item v-for="citem in item.children" :key="item.key">
+          <a-menu-item v-for="citem in item.children" :key="citem.key">
             <a :href="citem.url">{{citem.title}}</a>
           </a-menu-item>
         </a-sub-menu>
@@ -28,7 +28,7 @@ import microApps from '../micro-app'
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+
   },
   components: {
     UserOutlined,

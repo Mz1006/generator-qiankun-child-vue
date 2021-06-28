@@ -46,7 +46,7 @@ const { onGlobalStateChange, setGlobalState } = initGlobalState({
 })
 
 onGlobalStateChange((value, prev) =>
-  console.log('[onGlobalStateChange - master]:', value, prev)
+  console.log()
 )
 
 setGlobalState({

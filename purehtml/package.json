@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "serve": "cross-env PORT=7104 http-server . --cors"
+    "serve": "cross-env PORT=9104 http-server . --cors"
   },
   "license": "MIT",
   "devDependencies": {

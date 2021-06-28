@@ -5,6 +5,7 @@ const microApps = [
     container: '#subapp-container', // 必选，微应用的容器节点的选择器或者 Element 实例。
     activeRule: '/vue3', // 必选，微应用的激活规则。
     icon: "UserOutlined", // 侧边栏菜单icon
+    id: 1,
     children:[{   // 子应用路由
       key: 1,
       url: '/vue3',  // 对应主应用路由
@@ -44,6 +45,7 @@ const microApps = [
     container: '#subapp-container',
     activeRule: '/vue2',
     icon: "FundOutlined",
+    id: 2,
     children:[{
       key: 1,
       url: '/vue2',
@@ -65,12 +67,12 @@ const microApps = [
   },
   {
     name: 'purehtml',
-    entry: '//localhost:7104',
+    entry: '//localhost:9104',
     container: '#subapp-container',
     activeRule: '/purehtml',
+    id: 3,
     children:[],
-    icon: "WifiOutlined",
-    title: '3-1'
+    icon: "WifiOutlined"
   }
 ]
 

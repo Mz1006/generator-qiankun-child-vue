@@ -1,6 +1,6 @@
 <template>
-  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-sider v-model="collapsed" collapsible>
+  <a-layout style="min-height: 100vh">
+    <a-layout-sider collapsible>
       <div class="logo" />
       <Home />
     </a-layout-sider>
@@ -23,16 +23,20 @@
 </template>
 <script>
 import Home from '@/views/Home.vue'
+import {useRoute} from 'vue-router'
+
 export default {
   name: 'Main',
   components: {
     Home
   },
-  data() {
-    return {
-      collapsed: false,
-    };
-  },
+  setup(){
+   const route=useRoute();
+
+  //  const path = computed(() =>route.path)
+
+  //  console.log('当前路由',path)
+  }
 }
 </script>
 
