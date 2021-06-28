@@ -52,8 +52,6 @@ onGlobalStateChange((value, prev) =>
 setGlobalState({
   allRoutes: microApps
 })
-
-console.log(microApps[0].children[0].url+microApps[0].children[0].childpath)
 /**
  * Step3 设置默认进入的子应用
  */

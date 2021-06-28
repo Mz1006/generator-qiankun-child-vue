@@ -3,18 +3,18 @@
     <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
       <div v-for="item in microApps" :key="item.name">
         <a-menu-item :key="item.name" v-if="item.children.length === 0">
-          <fund-outlined />
-          <a :href="item.activeRule">{{item.name}}</a>
+          <component :is="item.icon"></component>
+          <a :href="item.activeRule">{{item.title}}</a>
         </a-menu-item>
         <a-sub-menu :key="item.name" v-else>
           <template #title>
             <span>
-              <user-outlined />
+              <component :is="item.icon"></component>
               <span>{{item.name}}</span>
             </span>
           </template>
           <a-menu-item v-for="citem in item.children" :key="item.key">
-            <a :href="citem.url">{{citem.name}}</a>
+            <a :href="citem.url">{{citem.title}}</a>
           </a-menu-item>
         </a-sub-menu>
       </div>
