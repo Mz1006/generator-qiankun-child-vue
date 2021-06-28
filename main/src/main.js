@@ -8,7 +8,8 @@ import 'ant-design-vue/dist/antd.css'
 import {
   registerMicroApps,
   start,
-  initGlobalState
+  initGlobalState,
+  setDefaultMountApp
 } from 'qiankun'
 
 createApp(App).use(store).use(router).use(Antd).mount('#main')
@@ -52,10 +53,11 @@ setGlobalState({
   allRoutes: microApps
 })
 
+console.log(microApps[0].children[0].url+microApps[0].children[0].childpath)
 /**
  * Step3 设置默认进入的子应用
  */
-// setDefaultMountApp('/vue3')
+setDefaultMountApp('/vue3/')
 
 // 启动 qiankun
 start()
