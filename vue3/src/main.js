@@ -17,16 +17,24 @@ function render(props = {}) {
 		if(item.name === name){
 			if(!!item.children.length){
 				item.children.forEach((item) => {
-					childrouter.push({
-						path: item.childpath,
-						name: item.name,
-						component: () => import('@/views/'+item.name+ '/index.vue')
-					})
+					if(item.childPathDiff > 1){
+						childrouter.push({
+							path: item.childpath,
+							name: item.name,
+							component: () => import('@/views/'+item.name+ '/index.vue')
+						})
+					} else {
+						childrouter.push({
+							path: item.childpath,
+							name: item.name,
+							component: () => import('@/views/'+item.name+ '.vue')
+						})
+					}
 				})
 			}
 		}
 	});
-	// console.log('childrouter',childrouter)
+
 	const router = createRouter({
 		history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/' + name : '/'),
 		routes: childrouter
