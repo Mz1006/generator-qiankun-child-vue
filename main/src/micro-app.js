@@ -7,7 +7,7 @@ const microApps = [
     icon: 'UserOutlined', // 侧边栏菜单icon
     id: 1,
     children: [{ // 子应用路由
-      key: 1,
+      key: 4,
       url: '/vue3', // 对应主应用路由
       childpath: '/', // 子应用路由
       childPathDiff: 1, // 子路由组件路径层
@@ -15,7 +15,7 @@ const microApps = [
       title: '1-1' // 侧边栏子菜单名
     },
     {
-      key: 2,
+      key: 5,
       url: '/vue3/About',
       childpath: '/about',
       childPathDiff: 2,
@@ -23,7 +23,7 @@ const microApps = [
       title: '1-2'
     },
     {
-      key: 3,
+      key: 6,
       url: '/vue3/Help',
       childpath: '/help',
       childPathDiff: 2,
@@ -31,7 +31,7 @@ const microApps = [
       title: '1-3'
     },
     {
-      key: 4,
+      key: 7,
       url: '/vue3/GoodsList',
       childpath: '/goodsList',
       childPathDiff: 2,
@@ -47,19 +47,19 @@ const microApps = [
     icon: 'FundOutlined',
     id: 2,
     children: [{
-      key: 1,
+      key: 8,
       url: '/vue2',
       name: 'Home',
       title: '2-1'
     },
     {
-      key: 2,
+      key: 9,
       url: '/vue2/About',
       name: 'About',
       title: '2-2'
     },
     {
-      key: 3,
+      key: 10,
       url: '/vue2/List',
       name: 'List',
       title: '2-3'

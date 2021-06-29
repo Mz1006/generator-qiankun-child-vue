@@ -1,15 +1,32 @@
 <template>
   <a-layout style="min-height: 100vh">
-    <a-layout-sider collapsible>
+    <a-layout-sider v-model:collapsed="collapsed" collapsible>
       <div class="logo" />
-      <Home />
+      <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
+        <template v-for="(item,index) in microApps" :key="index">
+          <a-menu-item v-if="item.children.length === 0" :key="item.id" @click="jumpRouter(item.activeRule)">
+            <component :is="item.icon"></component>
+            <span>{{item.name}}</span>
+          </a-menu-item>
+          <a-sub-menu v-else :key="`sub${item.id}`">
+            <template #title>
+              <span>
+                <component :is="item.icon"></component>
+                <span>{{item.name}}</span>
+              </span>
+            </template>
+            <a-menu-item v-for="citem in item.children" :key="citem.key" @click="jumpRouter(citem.url)">
+              <span>{{citem.title}}</span>
+            </a-menu-item>
+          </a-sub-menu>
+        </template>
+      </a-menu>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0" />
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+          <a-breadcrumb-item></a-breadcrumb-item>
         </a-breadcrumb>
         <div id="subapp-container">
 
@@ -22,20 +39,35 @@
   </a-layout>
 </template>
 <script>
-import Home from '@/views/Home.vue'
-import {useRoute} from 'vue-router'
+import { UserOutlined, FundOutlined, WifiOutlined } from '@ant-design/icons-vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import microApps from './micro-app'
 
 export default {
   name: 'Main',
   components: {
-    Home
+    UserOutlined,
+    FundOutlined,
+    WifiOutlined
   },
-  setup(){
-   const route=useRoute();
+  data () {
+    return {
+      collapsed: ref(false),
+      selectedKeys: ref([3])
+    }
+  },
+  setup () {
+    const router = useRouter()
 
-  //  const path = computed(() =>route.path)
+    const jumpRouter = (route) => {
+      router.push(route)
+    }
 
-  //  console.log('当前路由',path)
+    return {
+      microApps,
+      jumpRouter
+    }
   }
 }
 </script>
@@ -47,4 +79,3 @@ export default {
   margin: 16px;
 }
 </style>
-
