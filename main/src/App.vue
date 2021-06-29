@@ -4,7 +4,7 @@
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
         <template v-for="(item,index) in microApps" :key="index">
-          <a-menu-item v-if="item.children.length === 0" :key="item.id" @click="jumpRouter(item.activeRule)">
+          <a-menu-item v-if="item.children.length === 0" :key="item.id" @click="jumpRouter(item.activeRule,item.name,'')">
             <component :is="item.icon"></component>
             <span>{{item.name}}</span>
           </a-menu-item>
@@ -15,7 +15,7 @@
                 <span>{{item.name}}</span>
               </span>
             </template>
-            <a-menu-item v-for="citem in item.children" :key="citem.key" @click="jumpRouter(citem.url)">
+            <a-menu-item v-for="citem in item.children" :key="citem.key" @click="jumpRouter(citem.url,item.name,citem.title)">
               <span>{{citem.title}}</span>
             </a-menu-item>
           </a-sub-menu>
@@ -40,7 +40,7 @@
 </template>
 <script>
 import { UserOutlined, FundOutlined, WifiOutlined } from '@ant-design/icons-vue'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import microApps from './micro-app'
 
 export default {
@@ -59,9 +59,9 @@ export default {
   setup () {
     const breadcrumbItem = ref('vue/home')
 
-    const jumpRouter = (route) => {
+    const jumpRouter = (route, name, title) => {
       window.history.pushState(null, null, route)
-      breadcrumbItem.value = route
+      breadcrumbItem.value = `${name}/${title}`
     }
 
     return {
