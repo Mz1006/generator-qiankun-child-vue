@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-menu theme="dark" mode="inline">
-      <div v-for="item in microApps">
+      <div v-for="item in microApps" :key="item.id">
         <a-menu-item v-if="item.children.length === 0" :key="item.id">
           <component :is="item.icon"></component>
           <a :href="item.activeRule">{{item.name}}</a>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { UserOutlined, FundOutlined, WifiOutlined } from '@ant-design/icons-vue';
+import { UserOutlined, FundOutlined, WifiOutlined } from '@ant-design/icons-vue'
 import microApps from '../micro-app'
 export default {
   name: 'HelloWorld',
@@ -35,7 +35,7 @@ export default {
     FundOutlined,
     WifiOutlined
   },
-  setup(){
+  setup () {
     return {
       microApps
     }

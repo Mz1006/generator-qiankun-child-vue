@@ -1,7 +1,6 @@
 const path = require('path')
 const { name } = require('./package')
-const eslint = require('eslint-config-vue')
-console.log('eslint',eslint)
+
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
