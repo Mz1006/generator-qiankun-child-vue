@@ -26,7 +26,12 @@
       <a-layout-header style="background: #fff; padding: 0" />
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>{{breadcrumbItem}}</a-breadcrumb-item>
+          <a-breadcrumb-item>
+            {{breadcrumbPName}}
+          </a-breadcrumb-item>
+          <a-breadcrumb-item>
+            {{breadcrumbCName}}
+          </a-breadcrumb-item>
         </a-breadcrumb>
         <div id="subapp-container">
 
@@ -57,17 +62,25 @@ export default {
     }
   },
   setup () {
-    const breadcrumbItem = ref('vue/home')
+    const breadcrumbPName = ref('vue3')
+    const breadcrumbCName = ref('home')
 
     const jumpRouter = (route, name, title) => {
-      window.history.pushState(null, null, route)
-      breadcrumbItem.value = `${name}/${title}`
+      // window.history.pushState(null, null, route)
+      if (title) {
+        breadcrumbPName.value = name
+        breadcrumbCName.value = title
+      } else {
+        breadcrumbPName.value = name
+        breadcrumbCName.value = ''
+      }
     }
 
     return {
       microApps,
       jumpRouter,
-      breadcrumbItem
+      breadcrumbPName,
+      breadcrumbCName
     }
   }
 }
