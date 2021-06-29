@@ -26,7 +26,7 @@
       <a-layout-header style="background: #fff; padding: 0" />
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item></a-breadcrumb-item>
+          <a-breadcrumb-item>{{breadcrumbItem}}</a-breadcrumb-item>
         </a-breadcrumb>
         <div id="subapp-container">
 
@@ -40,8 +40,7 @@
 </template>
 <script>
 import { UserOutlined, FundOutlined, WifiOutlined } from '@ant-design/icons-vue'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
 import microApps from './micro-app'
 
 export default {
@@ -58,15 +57,17 @@ export default {
     }
   },
   setup () {
-    const router = useRouter()
+    const breadcrumbItem = ref('vue/home')
 
     const jumpRouter = (route) => {
-      router.push(route)
+      window.history.pushState(null, null, route)
+      breadcrumbItem.value = route
     }
 
     return {
       microApps,
-      jumpRouter
+      jumpRouter,
+      breadcrumbItem
     }
   }
 }
