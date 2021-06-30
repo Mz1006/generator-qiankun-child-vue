@@ -1,13 +1,11 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-view />
-    </div>
+  <div id="navvue">
+    <router-view />
   </div>
 </template>
 
 <style lang="less">
-#app {
+#navvue {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,7 +13,7 @@
   color: #2c3e50;
 }
 
-#nav {
+#navvue {
   padding: 30px;
 
   a {

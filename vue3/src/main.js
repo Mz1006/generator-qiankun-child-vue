@@ -43,7 +43,7 @@ function render(props = {}) {
   instance = createApp(App)
     .use(store)
     .use(router)
-    .mount(container ? container.querySelector('#app') : '#app');
+    .mount(container ? container.querySelector('#nav') : '#nav');
 }
 
 // 独立运行时
@@ -95,7 +95,7 @@ export const mount = async (props) => {
  */
 export async function unmount() {
   instance.unmount();
-  instance._container.innerHTML = '';
+  instance.$el.innerHTML = '';
   instance = null;
   router = null;
 }

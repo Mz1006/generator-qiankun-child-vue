@@ -66,7 +66,13 @@ export default {
     const breadcrumbCName = ref('home')
 
     const jumpRouter = (route, name, title) => {
+      // router.push(route)
       // window.history.pushState(null, null, route)
+      // router.replace(route)
+      // router.push(route, () => {})
+
+      history.pushState({}, title, route)
+
       if (title) {
         breadcrumbPName.value = name
         breadcrumbCName.value = title
