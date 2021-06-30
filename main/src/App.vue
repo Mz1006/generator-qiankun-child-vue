@@ -26,7 +26,7 @@
       <a-layout-header style="background: #fff; padding: 0" />
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>
+          <a-breadcrumb-item @click="setBreadcrumbUrl(breadcrumbPUrl)">
             {{breadcrumbPName}}
           </a-breadcrumb-item>
           <a-breadcrumb-item>
@@ -64,29 +64,31 @@ export default {
   setup () {
     const breadcrumbPName = ref('vue3')
     const breadcrumbCName = ref('home')
-
+    const breadcrumbPUrl = ref('')
+    // 侧边栏跳转
     const jumpRouter = (route, name, title) => {
-      // router.push(route)
-      // window.history.pushState(null, null, route)
-      // router.replace(route)
-      // router.push(route, () => {})
-
       history.pushState({}, title, route)
-
-      if (title) {
+      breadcrumbPUrl.value = route
+      if (!!title && !!name) {
         breadcrumbPName.value = name
         breadcrumbCName.value = title
-      } else {
+      } else if (title === '') {
         breadcrumbPName.value = name
         breadcrumbCName.value = ''
       }
     }
+    // 面包屑跳转
+    const setBreadcrumbUrl = (route) => {
+      history.pushState({}, '', route)
+    }
 
     return {
-      microApps,
+      microApps, // 侧边栏
       jumpRouter,
       breadcrumbPName,
-      breadcrumbCName
+      breadcrumbCName,
+      breadcrumbPUrl,
+      setBreadcrumbUrl
     }
   }
 }
